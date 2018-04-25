@@ -1,14 +1,15 @@
 node-addon-mpg123
 =========
 
-### NodeJS addon & native bindings to libmpg123
-[![Build Status](https://travis-ci.org/mdluo/node-addon-mpg123.svg?branch=master)](https://travis-ci.org/mdluo/node-addon-mpg123)
+### node.js addon & native bindings to libmpg123
 
-`node-addon-mpg123` is based on [TooTallNate/node-lame](https://github.com/TooTallNate/node-lame) and removed `lame` related code to keep it simple. *And extended the `Decoder` to support decoding format  options.*
+[![npm](https://img.shields.io/npm/v/nampg123.svg)](https://www.npmjs.com/package/nampg123) [![Build Status](https://travis-ci.org/mdluo/node-addon-mpg123.svg?branch=master)](https://travis-ci.org/mdluo/node-addon-mpg123)
+
+`node-addon-mpg123` is based on [TooTallNate/node-lame](https://github.com/TooTallNate/node-lame) and removed `lame` related code to keep it simple. **And extended the `Decoder` to support decoding format  options.**
 
 For all your async streaming MP3 decoding needs, there's `node-addon-mpg123`!
 This module hooks into libmpg123, the library that the `mpg123` command uses, to
-provide `Decoder` streams to NodeJS.
+provide `Decoder` streams to node.js.
 
 
 Installation
@@ -17,10 +18,10 @@ Installation
 `node-addon-mpg123` comes bundled with its own copy of `libmpg123`, so
 there's no need to have them installed on your system.
 
-Simply compile and install `node-addon-mpg123` using `npm`:
+Simply compile and install `nampg123` using `npm`:
 
 ``` bash
-$ npm install node-addon-mpg123
+$ npm i nampg123
 ```
 
 Example
@@ -30,7 +31,7 @@ Here's an example of using `node-addon-mpg123` to decode an MP3 file coming from
 `process.stdin` to some raw PCM data that gets piped to `process.stdout`:
 
 ``` javascript
-const mpg123 = require('node-addon-mpg123');
+const mpg123 = require('nampg123');
 
 // create the Decoder instance
 const decoder = new mpg123.Decoder();
@@ -55,7 +56,7 @@ the MP3 file is determined (usually right at the beginning). You can specify
 the output PCM data format when creating the decoder instance.
 
 ```javascript
-const mpg123 = require('node-addon-mpg123');
+const mpg123 = require('nampg123');
 const decoder = new mpg123.Decoder({
   sampleRate: 44100,        // [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000]
   channels: mpg123.STEREO,  // [mpg123.MONO, mpg123.STEREO, mpg123.MONO | mpg123.STEREO]

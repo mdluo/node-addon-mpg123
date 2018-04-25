@@ -1,6 +1,6 @@
 {
-  "name": "node-addon-mpg123",
-  "description": "NodeJS addon & native bindings to libmpg123.",
+  "name": "nampg123",
+  "description": "node.js addon & native bindings to libmpg123.",
   "keywords": ["mpg123", "mp3", "mpeg", "mpg", "decode"],
   "version": "1.2.4",
   "author": "Nathan Rajlich <nathan@tootallnate.net> (http://tootallnate.net)",
