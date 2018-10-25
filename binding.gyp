@@ -9,9 +9,11 @@
       "include_dirs" : [
         '<!(node -e "require(\'nan\')")'
       ],
-      'dependencies': [
-        'deps/mpg123/mpg123.gyp:mpg123'
-      ],
+      "link_settings": {
+        "libraries": [
+          "-lmpg123"
+        ]
+      },
       'conditions':[
         ['OS=="win"', {
         'defines':[
