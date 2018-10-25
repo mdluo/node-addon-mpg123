@@ -43,12 +43,12 @@ describe('Decoder', function () {
       file.pipe(decoder);
     });
 
-    it('should set correct output encoding format', function (done) {
+    it('should set correct float output encoding format', function (done) {
       var file = fs.createReadStream(filename);
       var decoder = new lame.Decoder({
         sampleRate: 44100,
         channels: 1,
-        signed: false,
+        signed: true,
         float: true,
         bitDepth: 32,
       });
@@ -60,6 +60,28 @@ describe('Decoder', function () {
         assert.equal(false, format.signed);
         assert.equal(true, format.float);
         assert.equal(32, format.bitDepth);
+        done();
+      });
+      file.pipe(decoder);
+    });
+
+    it('should set correct integer output encoding format', function (done) {
+      var file = fs.createReadStream(filename);
+      var decoder = new lame.Decoder({
+        sampleRate: 44100,
+        channels: 1,
+        signed: true,
+        float: false,
+        bitDepth: 24,
+      });
+      decoder.on('format', function (format) {
+        assert(format);
+        assert.equal(20608, format.raw_encoding);
+        assert.equal(44100, format.sampleRate);
+        assert.equal(1, format.channels);
+        assert.equal(true, format.signed);
+        assert.equal(false, format.float);
+        assert.equal(24, format.bitDepth);
         done();
       });
       file.pipe(decoder);
