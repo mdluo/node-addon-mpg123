@@ -100,7 +100,6 @@ NAN_METHOD(node_mpg123_open_feed) {
 
 
 NAN_METHOD(node_mpg123_rates) {
-  UNWRAP_MH;
   const long *rates;
   size_t nrates = 0;
   mpg123_rates(&rates, &nrates);
@@ -428,7 +427,7 @@ void InitMPG123(Handle<Object> target) {
   Nan::HandleScope scope;
 
 #define CONST_INT(value) \
-  Nan::ForceSet(target, Nan::New<String>(#value).ToLocalChecked(), Nan::New<Integer>(value), \
+  Nan::DefineOwnProperty(target, Nan::New<String>(#value).ToLocalChecked(), Nan::New<Integer>(value), \
       static_cast<PropertyAttribute>(ReadOnly|DontDelete));
 
   // mpg123_errors
